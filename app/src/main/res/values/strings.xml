@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PalCards</string>
+    <string name="main_menu_text">PalCards Main Menu</string>
+    <string name="start_new_game">Start New Game</string>
+    <string name="game_settings">Game Settings</string>
+    <string name="view_high_scores">View High Scores</string>
+    <string name="help">Help</string>
+</resources>
