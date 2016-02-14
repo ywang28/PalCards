@@ -17,7 +17,6 @@ public class NewGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
         ButterKnife.bind(this);
-        images_grid.setAdapter(new ImageGridViewAdapter(this, 12));
 
     }
 }

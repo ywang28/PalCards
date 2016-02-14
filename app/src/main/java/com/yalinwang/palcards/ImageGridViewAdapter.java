@@ -61,7 +61,8 @@ public class ImageGridViewAdapter extends BaseAdapter {
                 .load(url) //
                 .placeholder(R.drawable.loading) //
                 .error(R.drawable.error_button) //
-                .fit() //
+                .fit()
+                .centerInside()//
                 .tag(context) //
                 .into(view);
 
