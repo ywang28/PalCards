@@ -6,38 +6,28 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * Created by ywang28 on 2/7/16.
  */
 public class ImageGridViewAdapter extends BaseAdapter {
+
     private final Context context;
-    private static final String IMAGE_BASE_URL = "http://myexpensemanager.herokuapp.com/images/";
-    private final List<String> imageUrls = new ArrayList<>();
+    private int count;
+
 
     public ImageGridViewAdapter(Context context, int imageCount) {
         this.context = context;
-
-        for (int i = 1; i <= imageCount; i++)  {
-            imageUrls.add(IMAGE_BASE_URL + i + ".png");
-        }
-
-        Collections.shuffle(imageUrls);
+        this.count = imageCount;
     }
 
     @Override
     public int getCount() {
-        return imageUrls.size();
+        return count;
     }
 
     @Override
     public String getItem(int position) {
-        return imageUrls.get(position);
+        return String.valueOf(position);
     }
 
     @Override
@@ -50,21 +40,12 @@ public class ImageGridViewAdapter extends BaseAdapter {
         ImageView view = (ImageView) convertView;
         if (view == null) {
             view = new ImageView(context);
-            view.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            view.setScaleType(ImageView.ScaleType.FIT_XY);
         }
 
-        // Get the image URL for the current position.
-        String url = getItem(position);
-
-        // Trigger the download of the URL asynchronously into the image view.
-        Picasso.with(context) //
-                .load(url) //
-                .placeholder(R.drawable.loading) //
-                .error(R.drawable.error_button) //
-                .fit()
-                .centerInside()//
-                .tag(context) //
-                .into(view);
+        view.setImageResource(R.drawable.card_back);
+        view.setAdjustViewBounds(true);
+        view.setPadding(5, 5, 5, 5);
 
         return view;
     }
